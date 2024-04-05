@@ -9,9 +9,14 @@ window.addEventListener("load", function() {
 	console.log("loop is set to " + video.loop);
 });
 
+var volumeDisplay = document.getElementById("volume");
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-	video.play()
+	video.play();
+	video.volume = 1;
+	var volumePercentage = video.volume * 100;
+	volumeDisplay.textContent = volumePercentage + "%"; 
+	console.log("Volume: " + volumePercentage + "%");
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
@@ -41,9 +46,9 @@ document.querySelector("#skip").addEventListener("click", function() {
 document.querySelector("#mute").addEventListener("click", function() {
 	video.muted = !video.muted;
 	if (video.muted) {
-		muteButton.textContent = "Unmute";
+		this.textContent = "Unmute";
 	} else {
-		muteButton.textContent = "Mute";
+		this.textContent = "Mute";
 	}
 });
 
