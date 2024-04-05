@@ -9,14 +9,18 @@ window.addEventListener("load", function() {
 	console.log("loop is set to " + video.loop);
 });
 
+var count = 0;
 var volumeDisplay = document.getElementById("volume");
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
-	video.volume = 1;
-	var volumePercentage = video.volume * 100;
-	volumeDisplay.textContent = volumePercentage + "%"; 
-	console.log("Volume: " + volumePercentage + "%");
+	if (count == 0) { 
+		video.volume = 1;
+		var volumePercentage = video.volume * 100;
+		volumeDisplay.textContent = volumePercentage + "%"; 
+		console.log("Volume: " + volumePercentage + "%");
+		count++;
+}
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
